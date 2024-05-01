@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>For You ♥</title>
+  <link rel="stylesheet" href="./styleletter.css">
+  <style>
+    .envlope-wrapper,
+    .reset {
+        display: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="envlope-wrapper">
+        <div id="envelope" class="close">
+            <div class="front flap"></div>
+            <div class="front pocket"></div>
+            <div class="letter">
+                <div class="words line1"></div>
+                <div class="words line2"></div>
+            </div>
+            <div class="hearts">
+                <div class="heart a1"></div>
+                <div class="heart a2"></div>
+                <div class="heart a3"></div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="reset">
+        <button id="open">Abrir</button>
+        <button id="reset">Reiniciar</button>
+    </div>
+    <div id="mensajeNoEsLaHora" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Comic Sans MS', sans-serif;">
+        <h1>Aún no es hora...</h1>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

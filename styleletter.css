@@ -1,0 +1,323 @@
+#envelope {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 180px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #f9c5c8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 82px solid transparent;
+  /* a little smaller */
+  border-top: 98px solid #0e1077;
+  /* a little larger */
+  transform-origin: top;
+  pointer-events: none;
+}
+
+.pocket {
+  border-left: 140px solid #2447e4;
+  border-right: 140px solid #2447e4;
+  border-bottom: 90px solid #2421c0;
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  background-color: #ffffff;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  top: 5%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+}
+
+.letter:after {
+  content: "";
+  /* Añade más líneas con \A según sea necesario */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  white-space: pre; /* Esto es importante para que los saltos de línea funcionen (\A) */
+  background-image: linear-gradient(180deg, rgba(59, 18, 156, 0) 25%, rgba(110, 103, 182, 0.37) 55%, #320c638a 100%);
+}
+
+.words {
+  position: absolute;
+  left: 5%;
+  width: 90%;
+  height: 20%;
+  background-color: #75a2f7;
+  overflow: hidden; 
+}
+
+.words.line1 {
+  top: 15px;
+  width: 150px;
+  height: 25px;
+}
+.words.line1::after {
+  content: "♥ 02/04/2024 ♥";
+  position: relative;
+  top: 10%;
+  left: 0%;
+  font-size: 15px;
+  color: #000;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-weight: bold;
+}
+
+.words.line2 {
+  top: 50px;
+  left: 2%;
+  width: calc(100% - 5%); /* El 96% del ancho del contenedor menos 10px */
+  height: calc(100% - 60px); /* El 50% de la altura del contenedor menos 10px */
+  overflow: auto; /* Esto permite que el contenido sea scrollable si excede el tamaño del contenedor */
+}
+
+.words.line2::after {
+  content: "Padre mío, \A\ANo suelo decirlo mucho, pero me gustaría que fueras eterno. Me da mucho miedo perderte o verte enfermo, por ende, quiero que sepas que te amo con toda mi alma, incondicionalmente desde siempre y para siempre. Que mi madre y tú son todo lo que tengo y estoy tan agradecida por todo lo que me dan. \A\A Te admiro mucho. La vida no me alcanzaría para agradecerte todo lo que hiciste y has hecho por mí. Espero retribuirles todo lo que me han dado. Eres mi héroe, me siento muy afortunada de disfrutar y vivir cada momento con ustedes, mi familia. \A\A Sabemos que son épocas difíciles y más el estar alejados, a veces nos pesa, pero independientemente de todo; mi mami, Sebas y yo siempre estaremos aquí para ti. Nuestro amor se mantendrá intacto, porque eres nuestro ejemplo a seguir y la persona que más nos ama en el mundo enterito. Está bien si a veces te sientes cansado, agotado y con ganas de dejar todo, esos días quiero que pienses y te refugies en nosotros, estaremos aquí siempre para darte las fuerzas que necesites. \A\A Te amamos y extrañamos un montón. ¡Feliz cumpleaños! Pásala bien y nunca olvides lo importantes que eres para nosotros.";
+  position: relative;
+  height: 100%; /* Cambiado a 100% para permitir el scroll si el contenido excede la altura del contenedor */
+  left: 0%;
+  transform: translate(10%, 10%);
+  font-size: 18px;
+  color: #000;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-weight: bold;
+  white-space: pre-wrap; /* Esto permite el salto de línea */
+  z-index: 5;
+}
+
+
+
+.words.line3 {
+  top: 50%;
+}
+
+.words.line3::after {
+  content: "14/02/2024";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #000;
+  font-family: 'Georgia', sans-serif;
+}
+
+.words.line4 {
+  top: 70%;
+}
+
+.open .flap {
+  transform: rotateX(180deg);
+  transition: transform 0.4s ease, z-index 0.6s;
+  z-index: 0;
+}
+
+.close .flap {
+  transform: rotateX(0deg);
+  transition: transform 0.4s 0.6s ease, z-index 1s;
+  z-index: 5;
+}
+
+.close .letter {
+  transform: translateY(0px);
+  transition: transform 0.4s ease, z-index 1s;
+  z-index: 1;
+}
+
+.open .letter {
+  transform: translateY(-60px);
+  transition: transform 0.4s 0.6s ease, z-index 0.6s;
+  animation: changeZIndex 0.1s 2s forwards ease;
+}
+
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #D00000;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  pointer-events: none;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  -webkit-animation: none;
+          animation: none;
+}
+
+.a1 {
+  left: 20%;
+  transform: scale(0.6);
+  opacity: 1;
+  -webkit-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  -moz-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+.a2 {
+  left: 55%;
+  transform: scale(1);
+  opacity: 1;
+  -webkit-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  -moz-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+.a3 {
+  left: 10%;
+  transform: scale(0.8);
+  opacity: 1;
+  -webkit-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  -moz-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@-webkit-keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+@keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+body {
+  background-color: #f7d9da;
+}
+
+.envlope-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.reset {
+  position: absolute;
+  bottom: 0%; /* Ajusta el valor de 200px según sea necesario para la separación deseada */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.reset button {
+  font-weight: 800;
+  font-style: normal;
+  transition: all 0.1s linear;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: solid 2px #ff5757;
+  border-radius: 4px;
+  color: #ff5757;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px;
+  line-height: 1em;
+  text-decoration: none;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.reset button:hover {
+  background-color: #fc9d9d;
+  color: #a10000;
+}
+
+@keyframes changeZIndex {
+  0% {
+    /* transition-delay: 2s; */
+    z-index: 2;
+  }
+  100% {
+    width: calc(100vw - 20px); /* Ancho de la pantalla menos 20px */
+    height: calc((100vh/2.5) - 20px); /* Altura de la pantalla menos 20px */
+    left: 50%; /* Centrado horizontalmente */
+    top: 50%; /* Centrado verticalmente */
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+}
